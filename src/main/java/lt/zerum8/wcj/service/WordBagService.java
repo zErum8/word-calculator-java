@@ -49,8 +49,10 @@ public class WordBagService {
 	}
 
 	private String getBagFromAvailableBagsForWord(List<Bag> availableBags, String word) {
+		// take first char
 		char firstCharInLowerCase = word.toLowerCase().charAt(0);
 		for (Bag bag : availableBags) {
+			// if char is within bag's interval, take that bag
 			if (Character.toLowerCase(bag.getCharFrom()) <= firstCharInLowerCase
 					&& Character.toLowerCase(bag.getCharTill()) >= firstCharInLowerCase) {
 				return bag.getBagName();
