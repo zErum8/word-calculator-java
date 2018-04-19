@@ -1,0 +1,24 @@
+{
+	"project": "zerum8-wcj",
+	"services": [
+		{
+			"id": "frontend",
+			"apps": [
+				{
+					"id": "application-server",
+					"domain": {
+						"uri": "$domain"
+					},
+					"mem": 1024,
+					"image": "zerum8/word-calculator-java:latest",
+					"instances": 1,
+					"port_mappings": [
+						{
+							"container_port": 8080
+						}
+					]
+				}
+			]
+		}
+	]
+}
