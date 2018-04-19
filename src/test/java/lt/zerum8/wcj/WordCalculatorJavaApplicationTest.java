@@ -64,7 +64,7 @@ public class WordCalculatorJavaApplicationTest {
 	@Test
 	public void testFileUpload_returnJson_correctJsonReturned() throws Exception {
 		MockMultipartFile multipartFile = new MockMultipartFile("file", "text.txt", "text/plain",
-				"I love testing haha".getBytes());
+				"I love testing testing haha".getBytes());
 		MvcResult mvcResult = mockMvc.perform(fileUpload("/process-files-json").file(multipartFile))
 				.andExpect(status().isOk()).andReturn();
 
@@ -83,6 +83,9 @@ public class WordCalculatorJavaApplicationTest {
 		assertEquals(3, responseList.get(1).getRows().size());
 		assertEquals(1, responseList.get(2).getRows().size());
 		assertEquals(0, responseList.get(3).getRows().size());
+
+		assertEquals("testing", responseList.get(2).getRows().get(0).getWord());
+		assertEquals(2, responseList.get(2).getRows().get(0).getFrequencyCount());
 	}
 
 }
